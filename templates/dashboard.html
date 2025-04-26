@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocalMed - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles1.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="VocalMed Logo" class="logo">
+            <span class="logo-text">VocalMed</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="dashboard-content">
+                <div class="text-content">
+                    <h1 id="animated-text"></h1>
+                    <p>Manage your pharmacy with VocalMed's powerful tools.</p>
+                    <a href="{{ url_for('download_apk') }}" class="btn">
+                        Download Mobile App <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="model-content">
+                    <img src="{{ url_for('static', filename='images/doctor-illustration.svg') }}" alt="Assistant" style="height: 400px;">
+                    <div class="pointer-animation"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="reviews-carousel">
+                <div class="reviews-track">
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section class="feedback">
+            <div class="feedback-container">
+                <h2 class="section-title">Share Your Feedback</h2>
+                <form class="feedback-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Your Feedback" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mood">How do you feel about our service?</label>
+                        <div class="mood-slider">
+                            <span>😞</span>
+                            <input type="range" id="mood" min="1" max="5" value="3">
+                            <span>😊</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Feedback <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="VocalMed Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.google.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.google.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VocalMed. All rights reserved.</p>
+            <button class="scroll-top" aria-label="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

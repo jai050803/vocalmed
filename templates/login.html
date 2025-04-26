@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocalMed - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <main class="content-wrapper">
+            <div class="form-section">
+                <div class="form-container">
+                    <h1 class="form-title">Welcome Back</h1>
+                    <p class="form-subtitle">Login to access your VocalMed dashboard</p>
+                    
+                    <form action="{{ url_for('login') }}" method="post" class="login-form">
+                        <div class="input-group">
+                            <span class="input-icon">
+                                <i class="material-icons">email</i>
+                            </span>
+                            <input type="email" name="email" placeholder="Email" required class="form-input">
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-icon">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <input type="password" name="password" placeholder="Password" required class="form-input">
+                        </div>
+                        
+                        <button type="submit" class="btn login-btn">
+                            <span>Login</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                    
+                    <!-- Add flash messages display -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <div class="flash-messages">
+                                {% for category, message in messages %}
+                                    <div class="flash {{ category }}">{{ message }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="alternative-login">
+                        <div class="divider">
+                            <span>or continue with</span>
+                        </div>
+                        
+                        <div class="social-logins">
+                            <button class="social-btn google">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="social-btn apple">
+                                <i class="fab fa-apple"></i>
+                            </button>
+                            <button class="social-btn microsoft">
+                                <i class="fab fa-microsoft"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="register-link">Don't have an account? <a href="{{ url_for('register') }}">Register now</a></p>
+                </div>
+            </div>
+            
+            <div class="visual-section">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="app-preview">
+                                <div class="app-header">
+                                    <span class="app-logo">V</span>
+                                    <span class="app-title">VocalMed</span>
+                                </div>
+                                <div class="app-content">
+                                    <div class="wave wave1"></div>
+                                    <div class="wave wave2"></div>
+                                    <div class="wave wave3"></div>
+                                    <div class="app-message">
+                                        <h3>Revolutionize your pharmacy Store</h3>
+                                        <p>Use VocalMed services and manage better</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-shadow"></div>
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="floating-circle circle-1"></div>
+                    <div class="floating-circle circle-2"></div>
+                    <div class="floating-circle circle-3"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Password toggle functionality
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const passwordInput = this.parentElement.querySelector('input');
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Floating animation for phone mockup
+        function animatePhone() {
+            const phone = document.querySelector('.phone-mockup');
+            let angle = 0;
+            
+            setInterval(() => {
+                angle += 0.5;
+                const yOffset = Math.sin(angle * Math.PI / 180) * 5;
+                const rotation = Math.sin(angle * Math.PI / 180) * 2;
+                
+                phone.style.transform = `translateY(${yOffset}px) rotate(${rotation}deg)`;
+            }, 50);
+        }
+        
+        // Start animations when page loads
+        window.addEventListener('load', () => {
+            animatePhone();
+            
+            // Floating circles animation
+            const circles = document.querySelectorAll('.floating-circle');
+            circles.forEach((circle, index) => {
+                let angle = index * 120;
+                
+                setInterval(() => {
+                    angle += 1;
+                    const xOffset = Math.cos(angle * Math.PI / 180) * 10;
+                    const yOffset = Math.sin(angle * Math.PI / 180) * 10;
+                    
+                    circle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                }, 50);
+            });
+        });
+    </script>
+</body>
+</html>

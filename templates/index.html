@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VocalMed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="VocalMed Logo" class="logo">
+                <h1>Welcome to <span>VocalMed</span></h1>
+            </div>
+            <p class="tagline">Revolutionizing pharmacy management with cutting-edge AI technology</p>
+        </header>
+
+        <main class="content">
+            <div class="cards-container">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="{{ url_for('static', filename='images/inventory.png') }}" alt="Inventory">
+                        </div>
+                        <h3>Inventory Management</h3>
+                        <p>Track and manage your stock effortlessly in real-time with our AI-powered system.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="{{ url_for('static', filename='images/sales.jpeg') }}" alt="Sales">
+                        </div>
+                        <h3>Sales Management</h3>
+                        <p>Monitor sales trends and generate detailed reports with intelligent analytics.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="{{ url_for('static', filename='images/medicine.png') }}" alt="Medicine">
+                        </div>
+                        <h3>Medicine Details</h3>
+                        <p>Instant access to comprehensive medicine information and interactions.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <img src="{{ url_for('static', filename='images/employee.png') }}" alt="Management">
+                        </div>
+                        <h3>Easy Management</h3>
+                        <p>Streamline operations with intuitive workflow automation tools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <a href="{{ url_for('login') }}" class="btn">Get Started</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
